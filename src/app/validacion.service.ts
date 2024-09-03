@@ -13,6 +13,22 @@ export class ValidacionService {
     return localStorage.setItem('token', token);
   }
 
+  recuperarToken(): string {
+    return localStorage.getItem('token')!;
+  }
+
+  getDatosFromToken(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get('http://localhost:8080/users/me', { headers }).pipe(
+      catchError((error) => {
+        return of(error);
+      })
+    );
+  }
+
   getToken = (usuario: string, password: string): Observable<any> => {
     // Opcional: Configurar headers (si es necesario)
     const headers = new HttpHeaders({

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidacionService } from '../validacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private validacionService: ValidacionService
+    private validacionService: ValidacionService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       usuario: [
@@ -35,6 +37,7 @@ export class LoginComponent {
         } else {
           //TODO: Grabar el token en el localstorage
           this.validacionService.guardarToken(respuesta);
+          this.router.navigate(['/home']);
         }
       });
   }

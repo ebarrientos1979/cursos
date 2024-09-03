@@ -13,9 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ValidacionService } from './validacion.service';
 import { provideHttpClient } from '@angular/common/http';
 import { EtiquetaErrorDirective } from './directiva/etiqueta-error.directive';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, EtiquetaErrorDirective],
+  declarations: [AppComponent, LoginComponent, EtiquetaErrorDirective, HomeComponent],
   imports: [
     ReactiveFormsModule,
     MatInputModule,
