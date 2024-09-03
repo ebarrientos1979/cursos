@@ -8,9 +8,16 @@ import { ValidacionService } from '../validacion.service';
 })
 export class HomeComponent implements OnInit {
   private token: String = '';
-  private validacionService = Inject(ValidacionService);
+  //validacionService = Inject(ValidacionService);
+
+  constructor(private validacionService: ValidacionService) {}
 
   ngOnInit(): void {
     this.token = this.validacionService.recuperarToken();
+    this.validacionService
+      .getDatosFromToken(this.token)
+      .subscribe((respuesta: any) => {
+        console.log(respuesta);
+      });
   }
 }
