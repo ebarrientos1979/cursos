@@ -22,8 +22,6 @@ export class ValidacionService {
       Authorization: `Bearer ${token}`,
     });
 
-    console.log(headers);
-
     return this.http.get('http://localhost:8080/users/me', { headers }).pipe(
       catchError((error) => {
         return of(error);
