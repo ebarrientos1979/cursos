@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, signal } from '@angular/core';
 import { ValidacionService } from '../validacion.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { ValidacionService } from '../validacion.service';
 })
 export class HomeComponent implements OnInit {
   private token: String = '';
+  nombreUsuario = signal<string>('');
   //validacionService = Inject(ValidacionService);
 
   constructor(private validacionService: ValidacionService) {}
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
     this.validacionService
       .getDatosFromToken(this.token)
       .subscribe((respuesta: any) => {
-        console.log(respuesta);
+        console.log(respuesta['username']);
+        this.nombreUsuario.set(respuesta['username']);
       });
   }
 }
