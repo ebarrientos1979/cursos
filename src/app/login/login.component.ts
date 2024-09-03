@@ -10,6 +10,7 @@ import { ValidacionService } from '../validacion.service';
 export class LoginComponent {
   loginForm: FormGroup;
   hide = true;
+  error: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +30,12 @@ export class LoginComponent {
     this.validacionService
       .getToken(loginData.usuario, loginData.password)
       .subscribe((respuesta) => {
-        console.log(respuesta);
+        if (respuesta === 'error') {
+          this.error = respuesta;
+        } else {
+          //TODO: Grabar el token en el localstorage
+          this.validacionService.guardarToken(respuesta);
+        }
       });
   }
 }
