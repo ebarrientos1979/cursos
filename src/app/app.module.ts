@@ -14,9 +14,10 @@ import { ValidacionService } from './validacion.service';
 import { provideHttpClient } from '@angular/common/http';
 import { EtiquetaErrorDirective } from './directiva/etiqueta-error.directive';
 import { HomeComponent } from './home/home.component';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, EtiquetaErrorDirective, HomeComponent],
+  declarations: [AppComponent, LoginComponent, EtiquetaErrorDirective, HomeComponent, StockComponent],
   imports: [
     ReactiveFormsModule,
     MatInputModule,
