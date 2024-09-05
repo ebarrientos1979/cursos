@@ -8,6 +8,7 @@ import { ValidacionService } from '../validacion.service';
 })
 export class HomeComponent implements OnInit {
   private token: String = '';
+  respuesta: any;
   nombreUsuario = signal<string>('');
   //validacionService = Inject(ValidacionService);
 
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.validacionService
       .getDatosFromToken(this.token)
       .subscribe((respuesta: any) => {
-        console.log(respuesta['username']);
+        this.respuesta = respuesta;
         this.nombreUsuario.set(respuesta['username']);
       });
   }

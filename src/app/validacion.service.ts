@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,22 @@ export class ValidacionService {
   recuperarToken(): string {
     return localStorage.getItem('token')!;
   }
+
+  /*getValidarToken(token:String ): Observable<boolean>{
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get('http://localhost:8080/users/me', { headers })
+    .pipe(
+      tap(
+        
+      ),
+      catchError((error) => {
+        return of(false);
+      })
+    );
+  }*/
 
   getDatosFromToken(token: String): Observable<any> {
     const headers = new HttpHeaders({
